@@ -1,0 +1,15 @@
+{% extends "base_page.html" %}
+{% block content %}
+<h1 class="m-3">Вход</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <p>Пожалуйста, введите свои данные</p>
+                <form action="." method="post">
+                    {{ form.as_p }}
+                    {% csrf_token %}
+                    <p><input type="submit" value="Войти"></p>
+            <p>Если у вас еще нет учетной записи, вы можете <a href="{% url 'cakesite:register' %}">зарегистрироваться</a> </p>
+                </form>
+        </div>
+    </div>
+{% endblock %}

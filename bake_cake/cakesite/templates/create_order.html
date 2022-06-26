@@ -1,0 +1,20 @@
+{% extends 'base_page.html' %}
+
+{% block title %} Confirm order page {% endblock %}
+
+{% block content %}
+
+    <h1 class="m-3">Создание заказа</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-6 p-3">
+                <p>Заполните поля для создания заказа:</p>
+                <form action="." method="post" enctype="multipart/form-data">
+                    {{ cake_form.as_p }}
+                    {{ order_form.as_p }}
+                    {% csrf_token %}
+                    <p><input type="submit" value="Продолжить"></p>
+                </form>
+            </div>
+        </div>
+
+{% endblock content %}

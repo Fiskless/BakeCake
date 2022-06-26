@@ -1,0 +1,33 @@
+{% extends 'base_page.html' %}
+
+{% block title %} Create order page {% endblock %}
+
+{% block content %}
+
+    <h1 class="m-3">Создание заказа</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-6 p-3">
+                <p>Проверьте поля для завершения заказа:</p>
+                <form action="." method="post" enctype="multipart/form-data">
+                    {{ comment_form.as_p }}
+                    {% csrf_token %}
+                    <p>Информация о заказе:</p>
+                    <p>Дата и время доставки: {{order.deliver_to}}</p>
+                    <p>Адрес доставки: {{order.address}}</p>
+                    <p>Количество уровней: {{cake.levels_count}}</p>
+                    <p>Форма торта: {{cake.cake_form}}</p>
+                    <p>Топпинги: {{cake.topping}}</p>
+                    <p>Ягоды: {{cake.berries}}</p>
+                    <p>Декор: {{cake.decor}}</p>
+                    {% if cake.inscription %}
+                        <p>Надпись: {{cake.inscription}}</p>
+                    {% endif %}
+                    <p>Статус заказа: {{order.order_status}}</p>
+                    <p>Стоимость заказа: {{order.cost}}</p>
+                    <p><input type="submit" value="Завершить заказ"></p>
+                </form>
+
+            </div>
+        </div>
+
+{% endblock content %}

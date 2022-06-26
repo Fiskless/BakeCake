@@ -1,0 +1,16 @@
+{% extends 'base_page.html' %}
+
+{% block title %} Create order page {% endblock %}
+
+{% block content %}
+
+    <h1 class="m-3">Ваш заказ отменен</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-6 p-3">
+                <p>Пожалуйста, укажите причину отмены</p>
+                <textarea id="msg" name="user_message"></textarea>
+                <td><a class="nav-link" href="{% url 'cakesite:private_office' %}">Отправить комментарий</a></td>
+            </div>
+        </div>
+
+{% endblock content %}

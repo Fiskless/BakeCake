@@ -1,0 +1,39 @@
+{% extends 'base_page.html' %}
+
+{% block title %} Private office {% endblock %}
+
+{% block content %}
+
+<h1 class="m-3">Мои заказы</h1>
+{% if orders %}
+<div class="row justify-content-center">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Адрес</th>
+          <th scope="col">Дата и время доставки</th>
+          <th scope="col">Стоимость</th>
+          <th scope="col">Статус заказа</th>
+          <th scope="col">Отмена заказа</th>
+        </tr>
+      </thead>
+      {% for order in orders %}
+          <tbody>
+            <tr>
+              <td>{{ order.address }}</td>
+              <td>{{ order.deliver_to }}</td>
+              <td>{{ order.cost }}</td>
+              <td>{{ order.order_status }}</td>
+                {% if order.order_status == "Заявка обрабатывается" %}
+                    <td><a class="nav-link" href="{% url 'cakesite:order_cancellation' order_id=order.id %}">Отменить заказ</a></td>
+                {% else %}
+                    <td>Вы уже не можете отменить заказ</td>
+                {% endif %}
+            </tr>
+          </tbody>
+      {% endfor %}
+    </table>
+</div>
+{% endif %}
+
+{% endblock content %}

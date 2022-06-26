@@ -1,0 +1,5 @@
+{% extends "base_page.html" %}
+{% block content %}
+<h1 class="m-3">Добро пожаловать, {{ new_user.username }}!</h1>
+    <p>Ваш аккаунт был создан, теперь вы можете <a href="{% url 'cakesite:login' %}">войти на сайт</a>.</p>
+{% endblock %}

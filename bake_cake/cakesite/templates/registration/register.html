@@ -1,0 +1,20 @@
+{% extends "base_page.html" %}
+{% block content %}
+{% if not request.user.is_authenticated %}
+<h1 class="m-3">Создание аккаунта</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <p>Пожалуйста, заполните следующие поля:</p>
+            <form action="." method="post">
+                {{ form.as_p }}
+                <a class="nav-link" href="https://github.com/DevmanTeam/BakeCake/raw/master/bake_cake/soglasie%20na%20obrabotku%20PD.pdf">Поставив галочку выше, вы даете согласие на обработку персональных данных</a>
+                {% csrf_token %}
+                <p><input type="submit" value="Создать аккаунт"></p>
+            </form>
+        </div>
+    </div>
+{% endif %}
+    {% if request.user.is_authenticated %}
+        <h2>Вы уже зарегистрированы!</h2>
+    {% endif %}
+{% endblock %}
